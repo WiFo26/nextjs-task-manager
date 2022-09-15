@@ -1,0 +1,83 @@
+.task__item {
+  height: 5rem;
+  border-bottom: 0.1rem solid var(--light-grayish-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkbox__wrapper {
+  width: 10%;
+  display: grid;
+  place-content: center;
+}
+
+.task__label {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.marked {
+  color: var(--light-grayish-blue);
+  text-decoration: line-through;
+}
+
+.check__icon {
+  appearance: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--very-lgt-gray);
+  border: 0.1rem solid var(--light-grayish-blue);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.check__icon:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 0.8rem;
+  content: "\f00c";
+  color: white;
+  display: none;
+}
+
+.check__icon:hover {
+  border: 0.1rem solid #a274ef;
+}
+
+.check__icon:checked {
+  background: var(--check-bg);
+}
+
+.check__icon:checked:after {
+  display: block;
+}
+
+.task_title__container {
+  width: 100%;
+  text-align: start;
+}
+
+.delete__icon {
+  width: 10%;
+  color: rgba(0, 0, 0, 0);
+}
+
+.delete__icon > * {
+  width: 30%;
+}
+
+.delete__icon:hover {
+  color: var(--dark-grayish-blue);
+}
+
+.task__label:hover ~ .delete__icon {
+  color: var(--dark-grayish-blue);
+}
