@@ -47,12 +47,45 @@
 
 .filter__section {
   height: 5rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  color: var(--light-grayish-blue);
 }
 
 .empty_data {
   display: block;
-  margin-top: 2rem;
+  margin: 6rem 0;
+}
+
+.task_count {
+  /* font-size: 1.4rem; */
+  padding-left: 0.8rem;
+}
+
+.filter_actions {
+  width: 50%;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.clear_task {
+  font-weight: 700;
+}
+
+.clear_task:hover,
+.filter__deactivate:hover {
+  color: var(--dark-grayish-blue);
+}
+
+.filter_actions span,
+.clear_task {
+  cursor: pointer;
+}
+
+.filter__active {
+  color: var(--bright-blue);
 }
