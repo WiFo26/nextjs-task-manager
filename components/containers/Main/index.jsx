@@ -14,37 +14,22 @@ const DEFAULT_TASK_1 = new Task(
   false,
   LEVEL.NORMAL
 )
-const DEFAULT_TASK_2 = new Task(
-  1,
-  '10 minutes meditation',
-  false,
-  LEVEL.MEDIUM
-)
-const DEFAULT_TASK_3 = new Task(
-  2,
-  'Read for 1 hour',
-  false,
-  LEVEL.HIGH
-)
-const DEFAULT_TASK_4 = new Task(
-  3,
-  'Pick up groceries',
-  false,
-  LEVEL.CRITICAL
-)
+const DEFAULT_TASK_2 = new Task(1, '10 minutes meditation', false, LEVEL.MEDIUM)
+const DEFAULT_TASK_3 = new Task(2, 'Read for 1 hour', false, LEVEL.HIGH)
+const DEFAULT_TASK_4 = new Task(3, 'Pick up groceries', false, LEVEL.CRITICAL)
 
 export const Main = () => {
   const [tasks, setTasks] = useState([
     DEFAULT_TASK_1,
     DEFAULT_TASK_2,
     DEFAULT_TASK_3,
-    DEFAULT_TASK_4
+    DEFAULT_TASK_4,
   ])
 
   const [filterState, setFilterState] = useState({
     all: true,
     active: false,
-    completed: false
+    completed: false,
   })
 
   const { theme, toggleTheme } = useContext(ThemeContext)
@@ -82,13 +67,16 @@ export const Main = () => {
       <section className={style.title__container}>
         <span className={style.title}>TODO</span>
         <div className={style.theme__container}>
-          {theme === themes.dark ? <FontAwesomeIcon onClick={toggleTheme} icon={faSun} /> : <FontAwesomeIcon onClick={toggleTheme} icon={faMoon} />}
+          {theme === themes.dark ? (
+            <FontAwesomeIcon onClick={toggleTheme} icon={faSun} />
+          ) : (
+            <FontAwesomeIcon onClick={toggleTheme} icon={faMoon} />
+          )}
         </div>
       </section>
-      <TaskForm addTask={addTask}/>
+      <TaskForm addTask={addTask} />
       <section className={style.list__container}>
-        {tasks.length > 0
-          ? (
+        {tasks.length > 0 ? (
           <>
             <List
               tasks={tasks}
@@ -96,34 +84,47 @@ export const Main = () => {
               deleteTaskById={deleteTaskById}
             />
             <div className={style.filter__section}>
-            <span className={style.task_count}>{tasks.length} items left</span>
-            <div className={style.filter_actions}>
-              <span
-              className={`${filterState.all ? style.filter__active : style.filter__deactivate}`}
-              onClick={selectFilter}
-              >
-                All
+              <span className={style.task_count}>
+                {tasks.length} items left
               </span>
-              <span
-              className={`${filterState.active ? style.filter__active : style.filter__deactivate}`}
-              onClick={selectFilter}
-              >
-                Active
-              </span>
-              <span
-              className={`${filterState.completed ? style.filter__active : style.filter__deactivate}`}
-              onClick={selectFilter}
-              >
-                Completed
-              </span>
-            </div>
-            <span className={style.clear_task}>Clear Completed</span>
+              <div className={style.filter_actions}>
+                <span
+                  className={`${
+                    filterState.all
+                      ? style.filter__active
+                      : style.filter__deactivate
+                  }`}
+                  onClick={selectFilter}
+                >
+                  All
+                </span>
+                <span
+                  className={`${
+                    filterState.active
+                      ? style.filter__active
+                      : style.filter__deactivate
+                  }`}
+                  onClick={selectFilter}
+                >
+                  Active
+                </span>
+                <span
+                  className={`${
+                    filterState.completed
+                      ? style.filter__active
+                      : style.filter__deactivate
+                  }`}
+                  onClick={selectFilter}
+                >
+                  Completed
+                </span>
+              </div>
+              <span className={style.clear_task}>Clear Completed</span>
             </div>
           </>
-            )
-          : (
+        ) : (
           <h2 className={style.empty_data}>You have no tasks yet</h2>
-            )}
+        )}
       </section>
     </main>
   )

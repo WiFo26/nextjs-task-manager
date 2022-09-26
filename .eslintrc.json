@@ -6,7 +6,7 @@
     "extends": [
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
-        "standard"
+        "plugin:prettier/recommended"
     ],
     "overrides": [],
     "parserOptions": {
@@ -14,7 +14,18 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
-    "rules": {}
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "trailingComma": "es5",
+                "tabWidth": 2,
+                "semi": false,
+                "singleQuote": true
+            }
+        ]
+    }
 }
